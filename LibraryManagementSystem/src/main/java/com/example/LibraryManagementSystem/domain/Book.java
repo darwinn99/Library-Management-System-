@@ -15,26 +15,28 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(min = 1, max = 200)
+    @NotNull(message = "Book title cannot be null")
+    @Size(min = 1, max = 200, message = "Book title must be between 1 and 200 characters")
     private String title;
 
-    @NotNull
+    @NotNull(message = "Book Author cannot be null")
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
     @NotNull
-    @Size(min = 10, max = 13)
+    @Size(min = 1, max = 13, message = "Book ISBN must be between 1 and 13 characters")
     private String isbn;
 
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date publicationDate;
 
-    @Size(max = 50)
+    @NotNull
+    @Size(min = 1, max = 50, message = "Book Genre must be between 1 and 50 characters")
     private String genre;
 
-    @NotNull
+    @NotNull(message = "Status must be not null")
     private Boolean available;
 
 

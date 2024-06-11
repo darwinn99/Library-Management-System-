@@ -27,6 +27,7 @@ public class BorrowingRecord {
     @Temporal(TemporalType.DATE)
     private Date borrowDate;
 
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date returnDate;
 

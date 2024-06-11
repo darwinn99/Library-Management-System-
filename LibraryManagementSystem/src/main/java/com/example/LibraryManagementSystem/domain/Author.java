@@ -15,13 +15,16 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(min = 1, max = 100)
+
+    @Size(min = 1, max = 100, message = "Author name must be between 1 and 100 characters")
+    @NotNull(message = "Author name cannot be null")
     private String name;
 
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
-    @Size(max = 50)
+    @NotNull
+    @Size(min = 1, max = 100, message = "nationality size must be between 1 and 100 characters")
     private String nationality;
 }
