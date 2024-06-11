@@ -15,7 +15,7 @@ public class BorrowingRecord {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @NotNull
