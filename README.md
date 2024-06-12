@@ -55,7 +55,7 @@ The system implements validation checks to ensure data integrity and handles exc
 
 ## Documentation
 
-API documentation is generated using Swagger to describe the endpoints, request parameters, response formats, etc.
+API documentation is generated using Swagger with the SpringDoc dependency at this link: http://localhost:8080/api/v1/swagger-ui/index.html to describe the endpoints, request parameters, response formats, etc.
 
 ## Code Quality
 
