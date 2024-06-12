@@ -47,7 +47,8 @@ The API provides the following endpoints, all prefixed with `api/v1`:
 
 ## Database
 
-The system uses a SQL database to store and retrieve data for the entities. CRUD (Create, Read, Update, Delete) operations are implemented to manage data.
+The system uses H2 in-memory SQL database to store and retrieve data for the entities. CRUD (Create, Read, Update, Delete) operations are implemented to manage data.
+The Database is populated with 10 records in each table when you first boot-up the application using data.sql file.
 
 ## Validation and Exception Handling
 
