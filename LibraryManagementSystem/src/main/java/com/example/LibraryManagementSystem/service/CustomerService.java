@@ -2,6 +2,8 @@ package com.example.LibraryManagementSystem.service;
 
 import com.example.LibraryManagementSystem.domain.Customer;
 import com.example.LibraryManagementSystem.repo.CustomerRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -22,8 +24,8 @@ public class CustomerService {
     }
 
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    public Page<Customer> getAllCustomers(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 
     public Customer getCustomerById(Long id) {

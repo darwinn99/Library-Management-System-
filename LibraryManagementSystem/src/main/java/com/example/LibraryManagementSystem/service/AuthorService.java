@@ -2,6 +2,8 @@ package com.example.LibraryManagementSystem.service;
 
 import com.example.LibraryManagementSystem.domain.Author;
 import com.example.LibraryManagementSystem.repo.AuthorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<Author> getAllAuthors() {
-        return authorRepository.findAll();
+    public Page<Author> getAllAuthors(Pageable pageable) {
+        return authorRepository.findAll(pageable);
     }
 
     public Author getAuthorById(Long id) {

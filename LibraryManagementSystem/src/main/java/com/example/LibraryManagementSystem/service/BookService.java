@@ -3,6 +3,8 @@ package com.example.LibraryManagementSystem.service;
 import com.example.LibraryManagementSystem.domain.Author;
 import com.example.LibraryManagementSystem.domain.Book;
 import com.example.LibraryManagementSystem.repo.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +21,9 @@ public class BookService {
         this.bookRepository = bookRepository;
         this.authorService = authorService;
     }
-
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public Page<Book> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
-
 
     public Book getBookById(Long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
