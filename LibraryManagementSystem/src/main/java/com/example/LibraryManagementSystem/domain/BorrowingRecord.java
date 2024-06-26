@@ -13,21 +13,17 @@ public class BorrowingRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
-    @NotNull
     @Temporal(TemporalType.DATE)
     private Date borrowDate;
 
-    @NotNull
     @Temporal(TemporalType.DATE)
     private Date returnDate;
 

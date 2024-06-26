@@ -3,6 +3,7 @@ package com.example.LibraryManagementSystem.service;
 import com.example.LibraryManagementSystem.domain.Author;
 import com.example.LibraryManagementSystem.domain.Book;
 import com.example.LibraryManagementSystem.repo.BookRepository;
+import com.example.LibraryManagementSystem.repo.BorrowingRecordRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,15 @@ public class BookService {
 
     private BookRepository bookRepository;
     private AuthorService authorService;
+    private BorrowingRecordRepository borrowingRecordRepository;
 
-    public BookService(BookRepository bookRepository, AuthorService authorService) {
+
+    public BookService(BookRepository bookRepository, AuthorService authorService, BorrowingRecordRepository borrowingRecordRepository) {
         this.bookRepository = bookRepository;
         this.authorService = authorService;
+        this.borrowingRecordRepository = borrowingRecordRepository;
     }
+
     public Page<Book> getAllBooks(Pageable pageable) {
         return bookRepository.findAll(pageable);
     }
@@ -64,8 +69,11 @@ public class BookService {
     }
 
     public void deleteBook(Long id) {
-        bookRepository.deleteById(id);
-    }
+        boolean isBookBorrowed = borrowingRecordRepository.existsByBookIdAndReturnDateIsNull(id);
+        if (isBookBorrowed) {
+            throw new RuntimeException("This book is borrowed and can't be deleted now.");
+        }
+        bookRepository.deleteById(id);    }
 
     public List<Book> searchBooksByTitle(String title) {
         return bookRepository.findByTitleContainingIgnoreCase(title);

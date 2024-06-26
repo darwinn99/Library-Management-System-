@@ -12,4 +12,7 @@ public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord
     List<BorrowingRecord> findByCustomerId(Long customerId);
 
     List<BorrowingRecord> findByBookId(Long bookId);
+
+    boolean existsByBookIdAndReturnDateIsNull(Long bookId);
+
 }
